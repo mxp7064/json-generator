@@ -1,5 +1,3 @@
-
-
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -7,14 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
-
-    public static void main(String[] args) {
-
-
-
+    public static void main(String[] args) throws InterruptedException {
         BufferedReader reader;
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
@@ -28,11 +21,11 @@ public class Main {
                     filePath));
             String l = reader.readLine();
             while (l != null) {
-                //System.out.println(line);
-                if (l.contains(";")) {
+
+                if (l.contains(";") && !l.contains("import") && !l.contains("package")) {
                     attribuesLines.add(l);
                 }
-                // read next line
+
                 l = reader.readLine();
             }
             reader.close();
@@ -68,7 +61,6 @@ public class Main {
                 stringBuilder.append(System.getProperty("line.separator"));
             }
 
-
             stringBuilder.append("}");
             String output = stringBuilder.toString();
             System.out.println(output);
@@ -76,15 +68,17 @@ public class Main {
             StringSelection selection = new StringSelection(output);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(selection, selection);
+
             System.out.println("JSON sample set to clipboard");
+
+            // moras ostavit otvoren proces da bi radili na Ubuntu
+            // https://stackoverflow.com/questions/14242719/copying-to-global-clipboard-does-not-work-with-java-in-ubuntu
+            //System.in.read();
+            Thread.sleep(15000);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }
 
 

@@ -8,6 +8,14 @@
     <artifactId>jsongenerator</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+
     <build>
         <plugins>
             <plugin>
@@ -52,6 +60,7 @@
                         </manifest>
                     </archive>
                     <finalName>jg</finalName>
+                    <outputDirectory>/home/panca/jg</outputDirectory>
                 </configuration>
             </plugin>
 
