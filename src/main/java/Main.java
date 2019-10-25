@@ -37,7 +37,9 @@ public class Main {
                 String attributeName = words[length - 1];
                 attributeName = attributeName.substring(0, attributeName.length() - 1);
                 stringBuilder.append("\t");
+                stringBuilder.append("\"");
                 stringBuilder.append(attributeName);
+                stringBuilder.append("\"");
                 stringBuilder.append(": ");
                 stringBuilder.append("\"");
 
